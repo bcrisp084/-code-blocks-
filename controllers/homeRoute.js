@@ -3,7 +3,7 @@ const auth = require("../config/authenticate");
 const { User } = require("../models");
 
 router.get("/", (req, res) => {
-  res.render("landingPage", { title: "The Garage", style: "landingPage.css" });
+  res.render("landingPage", { title: "Code Blocks", style: "landingPage.css" });
 });
 
 router.get("/signup", (req, res) => {
@@ -27,10 +27,10 @@ router.get("/home", auth, async (req, res) => {
     attributes: { exclude: ["password"] },
   });
   const user = userData.get({ plain: true });
+  console.log("user", user);
   res.render("home", {
-    title: "The Garage",
+    title: "Code Blocks",
     style: "home.css",
-    script: "avatar.js",
     loggedIn: req.session.loggedIn,
     ...user,
   });

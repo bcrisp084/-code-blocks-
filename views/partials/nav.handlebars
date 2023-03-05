@@ -1,12 +1,66 @@
-<nav>
+<nav class="global-nav show-for-smedium">
+  <ul
+    class="dropdown menu right-side"
+    data-dropdown-menu="1m8ow1-dropdown-menu"
+    data-click-open="true"
+    role="menubar"
+  >
+    <li class="menu-toggle">
+      <button
+        type="button"
+        class="button"
+        data-toggle="offCanvasLeft"
+      >Languages</button>
+    </li>
+    <li
+      class="mwnu-item is-dropdown-submenu-parent opens-right"
+      role="none"
+      data-is-click="false"
+    ><a
+        href="#"
+        role="menuitem"
+        aria-haspopup="true"
+        aria-label="showcase"
+      >Showcase</a>
+      <ul
+        class="menu submenu is-dropdown-submenu first-sub vertical"
+        data-submenu=""
+        role="menubar"
+      >
+        <li role="none" class="is-submenu-item is-dropdown-submenu-item">
+          <a href="https://www.google.com">google</a>
+        </li>
+        <li role="none" class="is-submenu-item is-dropdown-submenu-item">
+          <a href="https://www.google.com">google</a>
+        </li>
+      </ul>
+      <li
+        class="mwnu-item is-dropdown-submenu-parent opens-right"
+        role="none"
+        data-is-click="false"
+      ><a
+          href="#"
+          role="menuitem"
+          aria-haspopup="true"
+          aria-label="showcase"
+        >{{username}}</a>
+        <ul
+          class="menu submenu is-dropdown-submenu first-sub vertical"
+          data-submenu=""
+          role="menubar"
+        >
+          <li role="none" class="is-submenu-item is-dropdown-submenu-item">
+            <a href="https://www.google.com">My Profile</a>
+          </li>
+          <li role="none" class="is-submenu-item is-dropdown-submenu-item">
+            <a href="https://www.google.com">Setting</a>
+          </li>
+          {{#if loggedIn}}
+            <li><a class="logout">Logout</a></li>
+          {{/if}}
+        </ul></li>
+    </li>
 
-  <ul>
-    <li class="username">{{username}}</li>
-    {{#if loggedIn}}
-      <li><a class="logout">Logout</a></li>
-    {{/if}}
-    <li><a>My garage</a></li>
-    <li><a>Add a car</a></li>
   </ul>
 </nav>
 <script
