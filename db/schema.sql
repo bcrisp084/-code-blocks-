@@ -1,0 +1,3 @@
+DROP DATABASE IF EXISTS code_blocks;
+
+CREATE DATABASE code_blocks;
