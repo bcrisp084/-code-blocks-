@@ -1,6 +1,7 @@
 const router = require("express").Router();
 const auth = require("../config/authenticate");
 const { User } = require("../models");
+let user;
 
 router.get("/", (req, res) => {
   res.render("landingPage", { title: "Code Blocks", style: "landingPage.css" });
@@ -26,12 +27,26 @@ router.get("/home", auth, async (req, res) => {
   const userData = await User.findByPk(req.session.userId, {
     attributes: { exclude: ["password"] },
   });
-  const user = userData.get({ plain: true });
+  user = userData.get({ plain: true });
   console.log("user", user);
   res.render("home", {
     title: "Code Blocks",
     style: "home.css",
     loggedIn: req.session.loggedIn,
+    ...user,
+  });
+});
+
+router.get("/profile", auth, (req, res) => {
+  res.render("profile", {
+    style: "profile.css",
+    ...user,
+  });
+});
+
+router.get("/settings", auth, (req, res) => {
+  res.render("settings", {
+    style: "settings.css",
     ...user,
   });
 });
