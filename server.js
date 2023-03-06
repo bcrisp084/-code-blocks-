@@ -10,33 +10,36 @@ const SequelizeStore = require("connect-session-sequelize")(session.Store);
 const path = require("path");
 const routes = require("./controllers");
 const PORT = process.env.PORT || 3000;
+const compression = require("compression");
+const { time } = require("console");
 
 const sess = {
   secret: process.env.SECRET,
   cookie: {
-    maxAge: 60 * 60 * 24 * 7,
+    maxAge:  60 * 60 * 24 * 7,
     httpOnly: true,
     secure: false,
     sameSite: "strict",
   },
-  resave: false,
+  rolling: true,
+  resave: true,
   saveUninitialized: true,
   store: new SequelizeStore({
     db: sequelize,
   }),
 };
 
-app.use(session(sess));
-
 app.engine("handlebars", hbs.engine);
 app.set("view engine", "handlebars");
 
+app.use(session(sess));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "public")));
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(routes);
+app.use(compression());
 
 sequelize.sync({ force: false }).then(() => {
   app.listen(PORT, () => console.log("Now listening on port: 3000"));
