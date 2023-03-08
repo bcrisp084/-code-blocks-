@@ -1,6 +1,6 @@
 const router = require("express").Router();
 const auth = require("../config/authenticate");
-const { User } = require("../models");
+const { User, Images } = require("../models");
 let user;
 
 router.get("/", (req, res) => {
@@ -37,11 +37,22 @@ router.get("/home", auth, async (req, res) => {
   });
 });
 
-router.get("/profile", auth, (req, res) => {
-  res.render("profile", {
-    style: "profile.css",
-    ...user,
-  });
+router.get("/profile", auth, async (req, res) => {
+  try {
+    const userPhotos = await Images.findAll({
+      where: {
+        user_id: req.session.userId,
+      },
+    });
+    const photos = userPhotos.map((photo) => photo.get({ plain: true }));
+    res.render("profile", {
+      style: "profile.css",
+      ...user,
+      photos,
+    });
+  } catch (error) {
+    res.status(404).json(error);
+  }
 });
 
 router.get("/settings", auth, (req, res) => {
