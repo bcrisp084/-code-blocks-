@@ -7,3 +7,20 @@
 body {
   background: #ede9dd;
 }
+
+button .button {
+  border-radius: 50%;
+}
+
+label {
+  cursor: pointer;
+}
+
+#profile-nav,
+li a {
+  background-color: #333;
+}
+
+#photo {
+  opacity: 0;
+}
