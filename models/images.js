@@ -1,25 +1,29 @@
 const sequelize = require("../config/connection");
 const { DataTypes, Model } = require("sequelize");
 
-class Cars extends Model {}
-Cars.init(
+class Images extends Model {}
+Images.init(
   {
     id: {
       type: DataTypes.INTEGER,
       primaryKey: true,
       autoIncrement: true,
     },
-    make: {
+    image_type: {
       type: DataTypes.STRING,
+      allowNull: false,
     },
-    model: {
+    name: {
       type: DataTypes.STRING,
+      allowNull: false,
     },
-    year: {
-      type: DataTypes.INTEGER,
+    upload_date: {
+      type: DataTypes.DATE,
+      defaultValue: DataTypes.NOW,
+      allowNull: false,
     },
-    photo: {
-      type: DataTypes.BLOB,
+    description: {
+      type: DataTypes.TEXT("medium"),
     },
     user_id: {
       type: DataTypes.INTEGER,
@@ -32,7 +36,7 @@ Cars.init(
   {
     sequelize,
     timestamps: false,
-    modelName: "cars",
+    modelName: "images",
   }
 );
-module.exports = Cars;
+module.exports = Images;

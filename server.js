@@ -11,12 +11,12 @@ const path = require("path");
 const routes = require("./controllers");
 const PORT = process.env.PORT || 3000;
 const compression = require("compression");
-const { time } = require("console");
+global.__basedir = __dirname;
 
 const sess = {
   secret: process.env.SECRET,
   cookie: {
-    maxAge:  60 * 60 * 24 * 7,
+    maxAge: 60 * 60 * 24 * 7,
     httpOnly: true,
     secure: false,
     sameSite: "strict",

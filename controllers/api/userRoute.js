@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const { User } = require("../../models");
+const { User, Images } = require("../../models");
 const multer = require("multer");
 const { memoryStorage } = require("multer");
 const upload = multer({ storage: memoryStorage });

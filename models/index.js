@@ -1,12 +1,12 @@
 const User = require("./user");
-const Cars = require("./cars");
+const Images = require("./images");
 
-User.hasMany(Cars, {
+User.hasMany(Images, {
   foreignKey: "user_id",
 });
 
-Cars.belongsTo(User, {
+Images.belongsTo(User, {
   foreignKey: "user_id",
 });
 
-module.exports = { User, Cars };
+module.exports = { User, Images };
