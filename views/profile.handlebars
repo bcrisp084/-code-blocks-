@@ -1,6 +1,8 @@
 <div class="top-bar" id="profile-nav">
   <div class="top-bar-right">
     <ul class="menu">
+      <li><a class="my-uploads" href="">My uploads</a></li>
+      <li><a class="my-faves" href="">Favorites</a></li>
       <li><a href="/home">Code Blocks</a></li>
     </ul>
   </div>
@@ -11,7 +13,7 @@
     <div class="grid-x grid-padding-x">
       <div class="cell medium-4">
         <img
-          src="images/image-1.jpg"
+          src="images/profile-pic.jpg"
           alt=""
           width="100px"
           height="100px"
@@ -52,20 +54,25 @@
 
       </div>
       <div class="cell medium-8 medium-cell-block-y">
-        <h2>My uploads</h2>
-        {{#each photos as |photo|}}
-          <h3>{{photo.description}}</h3>
-          <div>
-            <img src="images/{{photo.name}}" alt="" />
-          </div>
-        {{/each}}
+        <div  id="profile-uploads">
+              {{> profile-uploads}}
+        </div>
+        <div class="display-type" id="favorites">
+          {{> favorites}}
+        </div>
       </div>
     </div>
   </div>
   <div class="cell shrink footer">
-    <h3>Here's my footer</h3>
+    <h3>Code Blocks</h3>
   </div>
 </div>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js"
+      integrity="sha512-pumBsjNRGGqkPzKHndZMaAG+bir374sORyzM3uulLV14lN5LyykqNk8eEeUlUkB3U0M4FApyaHraT65ihJhDpQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
 <script
   src="js/profile.js
 "
