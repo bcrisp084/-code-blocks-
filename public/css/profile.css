@@ -24,3 +24,15 @@ li a {
 #photo {
   opacity: 50%;
 }
+
+.footer {
+  height: 40px;
+  text-align: center;
+  font-size: 1em;
+  background-color: #333;
+  color: whitesmoke;
+}
+
+.display-type {
+  display: none;
+}

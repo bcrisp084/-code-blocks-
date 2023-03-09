@@ -1,0 +1,7 @@
+<h2>My uploads</h2>
+{{#each photos as |photo|}}
+  <h3>{{photo.description}}</h3>
+  <div>
+    <img src="images/{{photo.name}}" alt="" />
+  </div>
+{{/each}}
