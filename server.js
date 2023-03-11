@@ -34,7 +34,9 @@ app.set("view engine", "handlebars");
 
 app.use(session(sess));
 app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+app.use(
+  express.urlencoded({ limit: "50mb", extended: true, parameterLimit: 1000000 })
+);
 app.use(express.static(path.join(__dirname, "public")));
 app.use(passport.initialize());
 app.use(passport.session());
