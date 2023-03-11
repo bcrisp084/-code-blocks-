@@ -1,8 +1,6 @@
 $(document).ready(function () {
   const submitBtn = document.querySelector("#photo-submit");
   const uploadForm = document.querySelector(".image-upload");
-  const favorties = document.querySelector("#favorites");
-  const myUploadsBtn = document.querySelector(".my-uploads");
 
   async function sendData(event) {
     event.preventDefault();
@@ -11,11 +9,13 @@ $(document).ready(function () {
       method: "POST",
       body: newPhoto,
     });
+    console.log("frontend-response", response);
+
     if (response.ok) {
-      console.log("response", response.status);
+      console.log("the response is ok");
       document.location.replace("/profile");
     } else {
-      alert(response.stat);
+      alert(response.statusText);
     }
   }
   $(".my-faves").on("click", function (event) {
@@ -29,5 +29,5 @@ $(document).ready(function () {
     $("#favorites").addClass("display-type");
   });
 
-  submitBtn.addEventListener("submit", sendData);
+  submitBtn.addEventListener("click", sendData);
 });
